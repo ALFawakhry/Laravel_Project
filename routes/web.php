@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\testcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/test' , [testcontroller::class , 'show']);
+
 Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/signup', function () {
     return view('signup');
 });
