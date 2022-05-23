@@ -66,7 +66,7 @@
 
 
             <br>
-            <button class="btn">Sign up</button>
+            <button class="btn">Sign-up</button>
             <br>
             <a href="index" class="sign-in">Sign In</a>
         </form>
