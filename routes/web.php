@@ -51,6 +51,10 @@ Route::get('/index7', function () {
 Route::get('/appointment', function () {
     return view('appointment');
 });
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
+
+Route::view('/contact','contactform')->name('contactform');
+// Route::post('/send',[App\Http\Controllers\contactcontroller::class,'send'])->namespace('send.email');
+Route::post('/send', 'App\Http\Controllers\contactcontroller@send')->name('send.email');

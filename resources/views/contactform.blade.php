@@ -63,28 +63,59 @@
 				</div>
 				<div class="col span_2_of_3">
 				  <div class="contact-form">
-				  	<h2>Contact Us</h2>
-					    <form>
-					    	<div>
-						    	<span><label>NAME</label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>
-						    <div>
-						    	<span><label>E-MAIL</label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>
-						    <div>
-						     	<span><label>MOBILE.NO</label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>
-						    <div>
-						    	<span><label>SUBJECT</label></span>
-						    	<span><textarea> </textarea></span>
-						    </div>
-						   <div>
-						   		<span><input type="submit" value="Submit"></span>
-						  </div>
-					    </form>
+				  	<h2>Contact Us</h2><hr><br>
+					  <form action="{{ route('send.email') }}" method="POST">
+						@csrf
+						@if (Session::has('error'))
+						    <div class="alert alert-danger">
+								{{Session::get('error')}}
+							</div>
+						@endif
+						
+						@if (Session::has('success'))
+						    <div class="alert alert-success">
+								{{Session::get('success')}}
+							</div>
+						@endif
+						<div>
+							<span><label>Name</label></span>
+							<span><input type="text" name="name" value=""></span>
+							@error('name')
+								<span style="color:red;">{{ $message }}</span>
+							 @enderror
+						</div>
+						<div>
+							<span><label>E-Mail</label></span>
+							<span><input type="text" name="email" value=""></span>
+							@error('email')
+							<span style="color:red;">{{ $message }}</span>
+						 @enderror
+						</div>
+						<div>
+							 <span><label>subject</label></span>
+							<span><input type="text" name="subject" value=""></span>
+							@error('subject')
+							<span style="color:red;">{{ $message }}</span>
+						 @enderror
+						</div>
+						<div>
+							<span><label>phone</label></span>
+						   <span><input type="text" name="phone" value=""></span>
+						   @error('phone')
+						   <span style="color:red;">{{ $message }}</span>
+						@enderror
+					   </div>
+						<div>
+							<span><label>message</label></span>
+							<span><textarea name="message"> </textarea></span>
+							@error('message')
+							<span style="color:red;">{{ $message }}</span>
+						 @enderror
+						</div>
+					   <div>
+							   <span><input type="submit"  value="Submit"></span>
+					  </div>
+					</form>
 				    </div>
   				</div>
 			  </div>
